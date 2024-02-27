@@ -24,37 +24,47 @@ class PFC {
       }
     });
   }
+  
 
   game(choixUser){
     const randomOrdi = Math.floor(Math.random() * this.choix.length);
-    const choixOrdi = this.choix[randomOrdi];
-    console.log("Choix de l'ordinateur : " + choixOrdi);
-    var ordi = ChoixOrdi;
+    this.choixOrdi = this.choix[randomOrdi];
+    console.log("Choix de l'ordinateur : " + this.choixOrdi);
+    var ordi = this.ChoixOrdi;
 
+    this.result = "";
     if (
-      (choixUser == "pierre" && choixOrdi == "pierre") ||
-      (choixUser == "feuille" && choixOrdi == "feuille") ||
-      (choixUser == "ciseaux" && choixOrdi == "ciseaux")
+      (choixUser == "pierre" && this.choixOrdi == "pierre") ||
+      (choixUser == "feuille" && this.choixOrdi == "feuille") ||
+      (choixUser == "ciseaux" && this.choixOrdi == "ciseaux")
     ) {
       console.log("Égalité !");
-      var result = "Égalité !";
+      this.result = "Égalité !";
     } else if (
-      (choixUser == "pierre" && choixOrdi == "feuille") ||
-      (choixUser == "feuille" && choixOrdi == "ciseaux") ||
-      (choixUser == "ciseaux" && choixOrdi == "pierre")
+      (choixUser == "pierre" && this.choixOrdi == "feuille") ||
+      (choixUser == "feuille" && this.choixOrdi == "ciseaux") ||
+      (choixUser == "ciseaux" && this.choixOrdi == "pierre")
     ) {
       console.log("Vous avez perdu...");
-      var result = "Vous avez perdu...";
+      this.result = "Vous avez perdu...";
     } else if (
-      (choixUser == "pierre" && choixOrdi == "ciseaux") ||
-      (choixUser == "feuille" && choixOrdi == "pierre") ||
-      (choixUser == "ciseaux" && choixOrdi == "feuille")
+      (choixUser == "pierre" && this.choixOrdi == "ciseaux") ||
+      (choixUser == "feuille" && this.choixOrdi == "pierre") ||
+      (choixUser == "ciseaux" && this.choixOrdi == "feuille")
     ) {
       console.log("Vous avez gagné !");
-      var result = "Vous avez gagné !";
+      this.result = "Vous avez gagné !";
     }
   }
-}
 
-const game = new PFC();
-game.start();
+  getChoixOrdi(){
+    return this.choixOrdi;
+  }
+
+  getResult(){
+    return this.result;
+  }
+}
+module.exports = new PFC();
+//const game = new PFC();
+// game.start();
