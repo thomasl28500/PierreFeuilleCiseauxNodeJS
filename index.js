@@ -1,14 +1,18 @@
 //Méthode avec Express
 const express = require("express");
 const app = express();
+const modulePFC = require("./modulePFC.js");
+
 
 app.get("/resultat", (req, res) => {
     var choixUser = req.query.jeu;
+modulePFC.game(choixUser);
     let structure =
     `<div>
-    <p>Vous avez joué : ${req.query.jeu}</p><br>
-    <p>L'ordinateur à joué : ${choixOrdi}</p><br>
-    <p>${result}</p>
+    <p>Vous avez joué : ${req.query.jeu}</p>
+    <p>L'ordinateur à joué : ${modulePFC.getChoixOrdi()}</p>
+    <p>${modulePFC.getResult()}</p>
+    <a href="./">Rejouer</a>
     </div>`;
   res.send(structure);
 });
@@ -29,6 +33,3 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Serveur démarré");
 });
-
-//Méthode en ligne de commande
-const modulePFC = require("./modulePFC.js");

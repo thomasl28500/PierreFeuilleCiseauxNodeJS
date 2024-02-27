@@ -11,5 +11,9 @@
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasl28500/PierreFeuilleCiseauxNodeJS"
   }
 }
